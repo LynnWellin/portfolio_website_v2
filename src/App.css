@@ -6,6 +6,51 @@
 	background: #282c34;
 }
 
+.Header {
+	display: flex;
+	color: antiquewhite;
+	height: 100px;
+}
+
+.HeaderLinks {
+	flex: 1;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.HeaderLink:link {
+	color: #61dafb;
+	margin: 4px;
+}
+
+.HeaderLink:visited {
+	color: #61dafb;
+}
+
+.LinkImage {
+	height: 25px;
+}
+
+.EmailContactContainer {
+	margin: 10px;
+	padding: 5px 15px;
+	/* border: 1px solid #515868; */
+	border-radius: 30px;
+	background: antiquewhite;
+	text-decoration: none;
+	color: #282c34;
+	font-weight: bold;
+	user-select: none;
+}
+
+.EmailContactContainer:hover {
+	cursor: pointer;
+	background: #515868;
+	color: antiquewhite;
+	/* border: 1px solid #515868; */
+}
+
 .SectionWrapper {
 	display: flex;
 	flex-direction: column;
@@ -20,13 +65,14 @@
 
 .ExperienceDetails {
 	height: 100%;
-	background: yellowgreen;
+	display: flex;
 }
 
 .OpenSectionHeader {
 	height: 100%;
 	width: 55px;
-	background: gray;
+	background: whitesmoke;
+	border-right: 1px solid #000000;
 }
 
 .OpenSectionName {
@@ -35,21 +81,22 @@
 	position: absolute;
 	bottom: 20px;
 	font-size: 40px;
-	color: antiquewhite;
 }
 
 .Details {
+	flex: 1;
 	display: grid;
-	max-width: 1000px;
 	grid-auto-flow: column;
-	grid-template-columns: repeat(10, 10%);
-	grid-template-rows: repeat(10, 10%);
+	/* Used for borders between items; requires use of 1 fr instea of %*/
+	grid-gap: 1px;
+	grid-template-columns: repeat(10, 1fr);
+	grid-template-rows: repeat(10, 1fr);
 	background: whitesmoke;
 }
 
 .ClosedSection {
 	height: 55px;
-	background: #282c34;
+	background: gray;
 	cursor: pointer;
 	overflow: hidden;
 }
@@ -61,23 +108,4 @@
 .SectionName {
 	color: antiquewhite;
 	font-size: 40px;
-}
-
-.Item {
-	background: #09d3ac;
-	border: 1px solid #282c34;
-}
-
-.Item1 {
-	grid-column: span 4;
-	grid-row: span 8;
-}
-
-.Item:hover {
-	background: #14a789;
-}
-
-.Item2 {
-	grid-column: span 3;
-	grid-row: span 5;
 }

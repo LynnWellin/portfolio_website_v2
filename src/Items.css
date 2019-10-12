@@ -1,0 +1,46 @@
+.ItemTitle {
+	padding: 5px;
+	font-size: 25px;
+}
+
+.Item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: #09d3ac;
+}
+
+.Item1 {
+	grid-column: span 4;
+	grid-row: span 10;
+}
+
+.Item:hover {
+	background: #14a789;
+}
+
+.Item2 {
+	grid-column: span 6;
+	grid-row: span 5;
+}
+
+.Item3 {
+	grid-column: span 3;
+	grid-row: span 5;
+}
+
+.Item4 {
+	grid-column: span 3;
+	grid-row: span 5;
+}
+
+.Skill {
+	display: inline-block;
+	margin: 5px;
+	padding: 5px 10px;
+	min-width: 50px;
+	text-align: center;
+	border-radius: 20px;
+	background: white;
+}
