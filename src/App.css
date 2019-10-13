@@ -8,8 +8,9 @@
 
 .Header {
 	display: flex;
-	color: antiquewhite;
+	color: whitesmoke;
 	height: 100px;
+	padding: 5px;
 }
 
 .HeaderLinks {
@@ -37,7 +38,7 @@
 	padding: 5px 15px;
 	/* border: 1px solid #515868; */
 	border-radius: 30px;
-	background: antiquewhite;
+	background: whitesmoke;
 	text-decoration: none;
 	color: #282c34;
 	font-weight: bold;
@@ -47,7 +48,7 @@
 .EmailContactContainer:hover {
 	cursor: pointer;
 	background: #515868;
-	color: antiquewhite;
+	color: whitesmoke;
 	/* border: 1px solid #515868; */
 }
 
@@ -59,6 +60,26 @@
 	background: #09d3ac;
 }
 
+.SectionHeader {
+	display: flex;
+}
+
+.SectionName {
+	flex: 1;
+	text-align: center;
+	color: whitesmoke;
+	background: #000000;
+	font-size: 25px;
+	padding: 5px;
+	cursor: pointer;
+	user-select: none;
+}
+
+.SelectedSN {
+	background: whitesmoke;
+	color: #000000;
+}
+
 .ExperienceContainer {
 	flex: 1;
 }
@@ -66,21 +87,6 @@
 .ExperienceDetails {
 	height: 100%;
 	display: flex;
-}
-
-.OpenSectionHeader {
-	height: 100%;
-	width: 55px;
-	background: whitesmoke;
-	border-right: 1px solid #000000;
-}
-
-.OpenSectionName {
-	transform: rotate(-90deg);
-	transform-origin: left top 0;
-	position: absolute;
-	bottom: 20px;
-	font-size: 40px;
 }
 
 .Details {
@@ -94,18 +100,6 @@
 	background: whitesmoke;
 }
 
-.ClosedSection {
-	height: 55px;
-	background: gray;
-	cursor: pointer;
-	overflow: hidden;
-}
-
 .ClosedSection:hover {
 	background: #515868;
-}
-
-.SectionName {
-	color: antiquewhite;
-	font-size: 40px;
 }

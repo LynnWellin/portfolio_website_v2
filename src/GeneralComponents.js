@@ -1,0 +1,65 @@
+import React, { Component } from 'react';
+
+class Header extends Component {
+	state = {
+		links: [
+			{
+				key: 'LinkedIn',
+				link: 'https://www.linkedin.com/in/yuryl/',
+				image: require('./Images/LI-Logo.png'),
+			},
+			{
+				key: 'LeetCode',
+				link: 'https://leetcode.com/lynnwellin/',
+				image: require('./Images/LeetCode_nav.4d940ca72.png'),
+			},
+		],
+	};
+
+	render() {
+		let { links } = this.state;
+		return (
+			<div className='Header'>
+				<div>
+					<h1>Yury Lebedev</h1>
+					<h2>Portfolio</h2>
+				</div>
+				<div className='HeaderLinks'>
+					<EmailContact />
+					{links.map(el => (
+						<FooterLink {...el} />
+					))}
+				</div>
+			</div>
+		);
+	}
+}
+
+class EmailContact extends Component {
+	render() {
+		return (
+			<a
+				href='mailto:y.d.lebedev@gmail.com?Subject=Contact%20From%20Portfolio%20Website'
+				className='EmailContactContainer'
+			>
+				<label>Contact</label>
+			</a>
+		);
+	}
+}
+
+class FooterLink extends Component {
+	render() {
+		return (
+			<a className='HeaderLink' href={this.props.link}>
+				<img
+					className='LinkImage'
+					src={this.props.image}
+					alt={this.props.key}
+				/>
+			</a>
+		);
+	}
+}
+
+export { Header };
