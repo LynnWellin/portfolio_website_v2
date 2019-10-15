@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
+import './Header.css';
+
+const links = [
+	{
+		key: 'LinkedIn',
+		link: 'https://www.linkedin.com/in/yuryl/',
+		image: require('./Images/LI-Logo.png'),
+	},
+	{
+		key: 'LeetCode',
+		link: 'https://leetcode.com/lynnwellin/',
+		image: require('./Images/LeetCode_nav.4d940ca72.png'),
+	},
+];
 
 class Header extends Component {
-	state = {
-		links: [
-			{
-				key: 'LinkedIn',
-				link: 'https://www.linkedin.com/in/yuryl/',
-				image: require('./Images/LI-Logo.png'),
-			},
-			{
-				key: 'LeetCode',
-				link: 'https://leetcode.com/lynnwellin/',
-				image: require('./Images/LeetCode_nav.4d940ca72.png'),
-			},
-		],
-	};
-
 	render() {
-		let { links } = this.state;
 		return (
 			<div className='Header'>
-				<div>
+				<div className='HeaderTitle'>
 					<h1>Yury Lebedev</h1>
 					<h2>Portfolio</h2>
 				</div>

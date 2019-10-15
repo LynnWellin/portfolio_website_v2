@@ -1,0 +1,52 @@
+.Header {
+	display: flex;
+	justify-content: space-around;
+	color: whitesmoke;
+	height: 100px;
+	padding: 5px;
+}
+
+.HeaderTitle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.HeaderLinks {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.HeaderLink:link {
+	color: #61dafb;
+	margin: 4px;
+}
+
+.HeaderLink:visited {
+	color: #61dafb;
+}
+
+.LinkImage {
+	margin: 10px;
+	height: 25px;
+}
+
+.EmailContactContainer {
+	margin: 10px;
+	padding: 5px 15px;
+	/* border: 1px solid #515868; */
+	border-radius: 30px;
+	background: whitesmoke;
+	text-decoration: none;
+	color: #282c34;
+	font-weight: bold;
+	user-select: none;
+}
+
+.EmailContactContainer:hover {
+	cursor: pointer;
+	background: #515868;
+	color: whitesmoke;
+	/* border: 1px solid #515868; */
+}
