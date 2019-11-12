@@ -9,38 +9,24 @@ class App extends Component {
     containers: [
       { name: "Developer", index: 0, data: DEV },
       { name: "Business", index: 1, data: BIZ }
-    ]
+    ],
+    open: 0
   };
 
+  swithExp() {
+    const { open } = this.state;
+    this.setState({ open: open ? 0 : 1 });
+  }
+
   render() {
+    const sections = this.state.containers;
+    const { open } = this.state;
     return (
       <div className="App">
-        <Header />
-        <SectionWrapper sections={this.state.containers} />
-      </div>
-    );
-  }
-}
-
-class SectionWrapper extends Component {
-  state = { open: 0 };
-
-  render() {
-    const { open } = this.state;
-    const { sections } = this.props;
-    return (
-      <div className="SectionWrapper">
-        <div className="SectionHeader">
-          {sections.map((el, index) => (
-            <div
-              className={"SectionName" + (index === open ? " SelectedSN" : "")}
-              onClick={() => this.setState({ open: index })}
-            >
-              <h2>{el.name}</h2>
-            </div>
-          ))}
+        <Header switch={() => this.swithExp()} />
+        <div className="SectionWrapper">
+          <ExperienceContainer details={sections[open]} />
         </div>
-        <ExperienceContainer details={sections[open]} />
       </div>
     );
   }
@@ -84,8 +70,8 @@ class Item extends Component {
     return (
       <div className={props.class + " Item"} style={this.backgroundStyle}>
         <h4 className="ItemTitle">{props.expName}</h4>
-        <p>{props.expDetails}</p>
-        <div>
+        <label className="Description">{props.expDetails}</label>
+        <div className="Skills">
           {props.techStack.map(el => (
             <Skill skill={el} />
           ))}

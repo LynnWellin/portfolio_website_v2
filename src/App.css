@@ -49,7 +49,7 @@
   grid-auto-flow: column;
   /* Used for borders between items; requires use of 1 fr instea of %*/
   grid-gap: 1px;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(10, 1fr);
   background: whitesmoke;
 }
