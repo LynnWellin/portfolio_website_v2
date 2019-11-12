@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Header } from "./GeneralComponents";
 import { DEV, BIZ } from "./data";
-import "./App.css";
-import "./Items.css";
+import "./css/App.css";
+import "./css/Items.css";
 
 class App extends Component {
   state = {
