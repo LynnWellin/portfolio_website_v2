@@ -5,6 +5,8 @@
 }
 
 .Item {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,28 +14,15 @@
   background: #09d3ac;
 }
 
-.Item1 {
-  grid-column: span 4;
-  grid-row: span 10;
-}
-
-.Item:hover {
-  background: #14a789;
-}
-
-.Item2 {
-  grid-column: span 4;
-  grid-row: span 5;
-}
-
-.Item3 {
-  grid-column: span 4;
-  grid-row: span 5;
-}
-
-.Item4 {
-  grid-column: span 2;
-  grid-row: span 5;
+.ItemDetails {
+  height: 100%;
+  width: 100%;
+  padding: 6% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #14be9c;
 }
 
 .Skills {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Octicon, { MarkGithub, LinkExternal } from "@primer/octicons-react";
 import "./css/Header.css";
 
 const links = [
@@ -34,6 +35,9 @@ class Header extends Component {
           {links.map(el => (
             <FooterLink {...el} />
           ))}
+          <a className="GithubLink" href="https://github.com/LynnWellin">
+            <Octicon icon={MarkGithub} size="medium" />
+          </a>
         </div>
       </div>
     );
@@ -67,4 +71,25 @@ class FooterLink extends Component {
   }
 }
 
-export { Header };
+class ProjectLink extends Component {
+  render() {
+    const { type, href } = this.props;
+    let icon;
+    switch (type) {
+      case "github":
+        icon = MarkGithub;
+        break;
+      default:
+        icon = LinkExternal;
+        break;
+    }
+
+    return (
+      <a className="ProjectLink" href={href}>
+        <Octicon icon={icon} size="medium" />
+      </a>
+    );
+  }
+}
+
+export { Header, ProjectLink };

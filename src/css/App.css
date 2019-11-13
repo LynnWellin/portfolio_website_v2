@@ -34,16 +34,14 @@
   color: #000000;
 }
 
+@media (max-width: 400px) {
+  .ExperienceContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .ExperienceContainer {
-  flex: 1;
-}
-
-.ExperienceDetails {
-  height: 100%;
-  display: flex;
-}
-
-.Details {
   flex: 1;
   display: grid;
   grid-auto-flow: column;
@@ -56,4 +54,14 @@
 
 .ClosedSection:hover {
   background: #515868;
+}
+
+.ProjectLink {
+  margin: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.ProjectLinksContainer {
+  display: flex;
 }

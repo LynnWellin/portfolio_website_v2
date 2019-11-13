@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header } from "./GeneralComponents";
+import { Header, ProjectLink } from "./GeneralComponents";
 import { DEV, BIZ } from "./data";
 import "./css/App.css";
 import "./css/Items.css";
@@ -37,20 +37,54 @@ class ExperienceContainer extends Component {
     let { details } = this.props;
     return (
       <div className="ExperienceContainer">
-        <ExperienceDetails details={details} />
+        {details.data.map(el => (
+          <Item {...el} />
+        ))}
       </div>
     );
   }
 }
 
-class ExperienceDetails extends Component {
+class Item extends Component {
+  state = { mouseOver: false };
+
   render() {
-    let { details } = this.props;
+    const { props } = this;
+    console.log(props.class);
+    const { mouseOver } = this.state;
     return (
-      <div className="ExperienceDetails">
-        <div className="Details">
-          {details.data.map(el => (
-            <Item {...el} />
+      <div
+        style={props.class}
+        onMouseEnter={() => {
+          console.log("enter", props.expName);
+          this.setState({ mouseOver: true });
+        }}
+        onMouseLeave={() => {
+          console.log("leave ", props.expName);
+          this.setState({ mouseOver: false });
+        }}
+      >
+        {mouseOver ? <Detailed {...props} /> : <Summary {...props} />}
+      </div>
+    );
+  }
+}
+
+class Detailed extends Component {
+  render() {
+    const { props } = this;
+    return (
+      <div className="ItemDetails">
+        <h4 className="ItemTitle">{props.expName}</h4>
+        <div className="ProjectLinksContainer">
+          {props.links.map(el => {
+            return <ProjectLink {...el} />;
+          })}
+        </div>
+        <label className="Description">{props.expDetails}</label>
+        <div className="Skills">
+          {props.techStack.map(el => (
+            <Skill skill={el} />
           ))}
         </div>
       </div>
@@ -58,17 +92,11 @@ class ExperienceDetails extends Component {
   }
 }
 
-class Item extends Component {
-  backgroundStyle = {
-    backgroundImage: `url("${this.props.background}")`,
-    "background-position": "center",
-    "background-size": "cover"
-  };
-
+class Summary extends Component {
   render() {
-    let { props } = this;
+    const { props } = this;
     return (
-      <div className={props.class + " Item"} style={this.backgroundStyle}>
+      <div className="Item">
         <h4 className="ItemTitle">{props.expName}</h4>
         <label className="Description">{props.expDetails}</label>
         <div className="Skills">
