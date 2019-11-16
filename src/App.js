@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { Header, ProjectLink } from "./GeneralComponents";
-import { DEV, BIZ } from "./data";
-import "./css/App.css";
-import "./css/Items.css";
+import React, { Component } from 'react';
+import { Header, ProjectLink } from './GeneralComponents';
+import { DEV, BIZ } from './data';
+import './css/App.css';
+import './css/Items.css';
 
 class App extends Component {
   state = {
     containers: [
-      { name: "Developer", index: 0, data: DEV },
-      { name: "Business", index: 1, data: BIZ }
+      { name: 'Developer', index: 0, data: DEV },
+      { name: 'Business', index: 1, data: BIZ },
     ],
-    open: 0
+    open: 0,
   };
 
   swithExp() {
@@ -48,6 +48,10 @@ class ExperienceContainer extends Component {
 class Item extends Component {
   state = { mouseOver: false };
 
+  componentWillUnmount() {
+    console.log('unmounting');
+  }
+
   render() {
     const { props } = this;
     console.log(props.class);
@@ -56,11 +60,11 @@ class Item extends Component {
       <div
         style={props.class}
         onMouseEnter={() => {
-          console.log("enter", props.expName);
+          console.log('enter', props.expName);
           this.setState({ mouseOver: true });
         }}
         onMouseLeave={() => {
-          console.log("leave ", props.expName);
+          console.log('leave ', props.expName);
           this.setState({ mouseOver: false });
         }}
       >
@@ -74,7 +78,7 @@ class Detailed extends Component {
   render() {
     const { props } = this;
     return (
-      <div className="ItemDetails">
+      <div className="Item">
         <h4 className="ItemTitle">{props.expName}</h4>
         <div className="ProjectLinksContainer">
           {props.links.map(el => {

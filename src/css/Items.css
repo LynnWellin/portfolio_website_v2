@@ -12,17 +12,19 @@
   justify-content: center;
   align-items: center;
   background: #09d3ac;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  padding: 6% 0;
 }
 
-.ItemDetails {
-  height: 100%;
-  width: 100%;
+.Item:hover {
   padding: 6% 0;
-  display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background: #14be9c;
+  justify-content: center;
+  justify-content: space-evenly;
+  background: #0faa8b;
 }
 
 .Skills {
@@ -44,4 +46,20 @@
 .Description {
   text-align: center;
   margin: 0px 35px;
+}
+
+.ProjectLink {
+  margin: 10px;
+  text-decoration: none;
+  color: black;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.Item:hover .ProjectLink {
+  opacity: 1;
+}
+
+.ProjectLinksContainer {
+  display: flex;
 }

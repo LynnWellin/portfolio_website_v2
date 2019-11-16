@@ -55,13 +55,3 @@
 .ClosedSection:hover {
   background: #515868;
 }
-
-.ProjectLink {
-  margin: 10px;
-  text-decoration: none;
-  color: black;
-}
-
-.ProjectLinksContainer {
-  display: flex;
-}
