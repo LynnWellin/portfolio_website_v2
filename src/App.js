@@ -39,7 +39,6 @@ class App extends Component {
   render() {
     const sections = this.state.containers;
     const { open, windowWidth } = this.state;
-    console.log(windowWidth);
     return (
       <div className="App">
         <Header switch={() => this.switchExp()} />
@@ -57,7 +56,7 @@ class ExperienceContainer extends Component {
     return (
       <div className="ExperienceContainer">
         {details.data.map(el => (
-          <Item {...el} width={width} />
+          <Item key={el.expName} {...el} width={width} />
         ))}
       </div>
     );
@@ -76,16 +75,13 @@ class Item extends Component {
   render() {
     const { props } = this;
     const { mouseOver } = this.state;
-    console.log(mouseOver);
     return (
       <div
         style={props.width > 600 ? props.class : phoneItem}
         onMouseEnter={() => {
-          console.log('enter', props.expName);
           this.setState({ mouseOver: true });
         }}
         onMouseLeave={() => {
-          console.log('leave ', props.expName);
           this.setState({ mouseOver: false });
         }}
       >
@@ -103,13 +99,13 @@ class Detailed extends Component {
         <h4 className="ItemTitle">{props.expName}</h4>
         <div className="ProjectLinksContainer">
           {props.links.map(el => {
-            return <ProjectLink {...el} />;
+            return <ProjectLink key={el.href} {...el} />;
           })}
         </div>
         <label className="Description">{props.expDetails}</label>
         <div className="Skills">
           {props.techStack.map(el => (
-            <Skill skill={el} />
+            <Skill key={el} skill={el} />
           ))}
         </div>
       </div>
@@ -126,7 +122,7 @@ class Summary extends Component {
         <label className="Description">{props.expDetails}</label>
         <div className="Skills">
           {props.techStack.map(el => (
-            <Skill skill={el} />
+            <Skill key={el} skill={el} />
           ))}
         </div>
       </div>
