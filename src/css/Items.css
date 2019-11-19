@@ -19,12 +19,31 @@
   padding: 6% 0;
 }
 
-.Item:hover {
-  padding: 6% 0;
-  flex-direction: column;
-  justify-content: center;
-  justify-content: space-evenly;
-  background: #0faa8b;
+@media (max-width: 600px) {
+  .Item.ItemHover {
+    padding: 6% 0;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+    background: #0faa8b;
+  }
+  .Item.ItemHover .ProjectLink {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 601px) {
+  .Item:hover {
+    padding: 6% 0;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+    background: #0faa8b;
+  }
+
+  .Item:hover .ProjectLink {
+    opacity: 1;
+  }
 }
 
 .Skills {
@@ -54,10 +73,6 @@
   color: black;
   opacity: 0;
   transition: opacity 1s;
-}
-
-.Item:hover .ProjectLink {
-  opacity: 1;
 }
 
 .ProjectLinksContainer {

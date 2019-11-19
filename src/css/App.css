@@ -34,22 +34,24 @@
   color: #000000;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .ExperienceContainer {
     display: flex;
     flex-direction: column;
   }
 }
 
-.ExperienceContainer {
-  flex: 1;
-  display: grid;
-  grid-auto-flow: column;
-  /* Used for borders between items; requires use of 1 fr instea of %*/
-  grid-gap: 1px;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(10, 1fr);
-  background: whitesmoke;
+@media (min-width: 601px) {
+  .ExperienceContainer {
+    flex: 1;
+    display: grid;
+    grid-auto-flow: column;
+    /* Used for borders between items; requires use of 1 fr instea of %*/
+    grid-gap: 1px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    background: whitesmoke;
+  }
 }
 
 .ClosedSection:hover {
