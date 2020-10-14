@@ -1,10 +1,10 @@
-import React from "react";
-import Octicon, { MarkGithub, LinkExternal } from "@primer/octicons-react";
-import "./css/Header.css";
-import { IPorfileLink, Link, LINKS } from "data";
-import styled from "@emotion/styled";
-import { keyframes } from "@emotion/core";
-import { flexColumn, flexWrap } from "styles";
+import React from 'react';
+import Octicon, { MarkGithub, LinkExternal } from '@primer/octicons-react';
+import './css/Switch.css';
+import { IPorfileLink, Link, LINKS } from 'data';
+import styled from '@emotion/styled';
+import { keyframes } from '@emotion/core';
+import { flexColumn, flexWrap } from 'styles';
 
 const HeaderWrapper = styled.div`
     ${flexColumn}
@@ -58,11 +58,7 @@ function Toggle({ changeType }: { changeType: () => void }) {
     return (
         <div className="ToggleDiv">
             <label>Developer</label>
-            <input
-                type="checkbox"
-                className="ExpSelect"
-                onChange={changeType}
-            />
+            <input type="checkbox" className="ExpSelect" onChange={changeType} />
             <label>Business</label>
         </div>
     );
@@ -129,7 +125,7 @@ const ProjectLinkContainer = styled.a`
 export function ProjectLink({ type, href }: Link) {
     let icon;
     switch (type) {
-        case "github":
+        case 'github':
             icon = MarkGithub;
             break;
         default:
