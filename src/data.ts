@@ -92,7 +92,7 @@ export const DEV = [
         'Project'
     ),
     new ItemData(
-        'Note Taking App: Notty',
+        'Note Taking App',
         [4, 5],
         [SK_REACT_NT, SK_NODE, SK_SQLITE, SK_FIREBASE],
         'Developed an Android app to take notes, and organize them by tags',
@@ -113,12 +113,12 @@ export const DEV = [
     new ItemData(
         'Portfolio Website',
         [2, 5],
-        [SK_REACT, SK_CSS, SK_FIREBASE],
+        [SK_REACT, SK_TS, SK_CSS, SK_FIREBASE],
         'Created a React website to demonstrate current portfolio',
         [
             {
                 type: 'github',
-                href: 'https://github.com/LynnWellin/portfolio_website_v2',
+                href: 'https://github.com/lebedevy/portfolio_website_v2',
             },
         ],
         'Project'
