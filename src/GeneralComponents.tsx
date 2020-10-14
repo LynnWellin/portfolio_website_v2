@@ -3,8 +3,7 @@ import Octicon, { MarkGithub, LinkExternal } from '@primer/octicons-react';
 import './css/Switch.css';
 import { IPorfileLink, Link, LINKS } from 'data';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/core';
-import { flexColumn, flexWrap } from 'styles';
+import { flexColumn, flexWrap, fadeIn } from 'styles';
 
 const HeaderWrapper = styled.div`
     ${flexColumn}
@@ -108,11 +107,6 @@ function FooterLink({ image, type, link }: IPorfileLink) {
         </HeaderLink>
     );
 }
-
-const fadeIn = keyframes`
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-`;
 
 const ProjectLinkContainer = styled.a`
     margin: 10px;

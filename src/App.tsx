@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Header, ProjectLink } from "./GeneralComponents";
-import { DEV, BIZ, ItemData } from "./data";
-import styled from "@emotion/styled";
-import { flexColumn } from "styles";
+import React, { useEffect, useState } from 'react';
+import { Header, ProjectLink } from './GeneralComponents';
+import { DEV, BIZ, ItemData } from './data';
+import styled from '@emotion/styled';
+import { flexColumn, pillCss, fadeIn, absolutePos } from 'styles';
 
 interface IExp {
     name: string;
@@ -15,8 +15,8 @@ interface ISections {
 }
 
 const SECTIONS: ISections = {
-    dev: { name: "Developer", data: DEV },
-    biz: { name: "Business", data: BIZ },
+    dev: { name: 'Developer', data: DEV },
+    biz: { name: 'Business', data: BIZ },
 };
 
 const AppContainer = styled.div`
@@ -34,7 +34,7 @@ const SectionWrapper = styled.div`
 `;
 
 export default function App() {
-    const [type, setType] = useState("dev");
+    const [type, setType] = useState('dev');
     const [windowWidth, setWindowWidth] = useState(0);
 
     const updateDimensions = () => {
@@ -43,22 +43,19 @@ export default function App() {
 
     useEffect(() => {
         updateDimensions();
-        window.addEventListener("resize", updateDimensions);
-        return () => window.removeEventListener("resize", updateDimensions);
+        window.addEventListener('resize', updateDimensions);
+        return () => window.removeEventListener('resize', updateDimensions);
     }, []);
 
     const changeType = () => {
-        setType(type === "dev" ? "biz" : "dev");
+        setType(type === 'dev' ? 'biz' : 'dev');
     };
 
     return (
         <AppContainer>
             <Header changeType={changeType} />
             <SectionWrapper>
-                <ExperienceContainer
-                    details={SECTIONS[type]}
-                    width={windowWidth}
-                />
+                <ExperienceContainer details={SECTIONS[type]} width={windowWidth} />
             </SectionWrapper>
         </AppContainer>
     );
@@ -86,10 +83,7 @@ const ExprienceContainer = styled.div`
     }
 `;
 
-function ExperienceContainer({
-    details,
-    width,
-}: IExpContainer & { width: number }) {
+function ExperienceContainer({ details, width }: IExpContainer & { width: number }) {
     return (
         <ExprienceContainer>
             {details.data.map((el) => (
@@ -101,8 +95,8 @@ function ExperienceContainer({
 
 const phoneItem = {
     flex: 1,
-    minHeight: "300px",
-    borderBottom: "1px solid #000000",
+    minHeight: '300px',
+    borderBottom: '1px solid #000000',
 };
 
 interface ItemProps extends ItemData {
@@ -125,6 +119,7 @@ function Item(props: ItemProps) {
 
 const ItemContainer = styled.div`
     ${flexColumn}
+    position: relative;
     height: 100%;
     width: 100%;
     justify-content: center;
@@ -132,27 +127,47 @@ const ItemContainer = styled.div`
     background-color: #fdfffc;
     transition: all 1s;
     padding: 6% 0;
+    padding-top: 52px;
     & h4 {
+        margin-bottom: 15px;
         padding: 5px;
         font-size: 25px;
         text-align: center;
     }
     &:hover {
-        padding: 6% 0;
-        justify-content: space-evenly;
         background-color: #edf2f4;
     }
 `;
 
 const Description = styled.label`
     text-align: center;
-    margin: 0px 35px;
+    margin: 0px 35px 10px 35px;
 `;
 
 const SkillsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+`;
+
+const FlexContainer = styled.div`
+    ${absolutePos}
+    top: 0;
+    left: 10px;
+`;
+
+const ExprienceTag = styled.div`
+    ${absolutePos}
+    top: 0;
+    right: 0;
+`;
+
+const NoLinks = styled.div`
+    ${pillCss}
+    animation: ${fadeIn} 1.5s forwards;
+    background-color: #00000085;
+    color: white;
+    font-weight: 500;
 `;
 
 interface ISummary extends ItemProps {
@@ -162,18 +177,21 @@ interface ISummary extends ItemProps {
 function Summary(props: ISummary) {
     return (
         <ItemContainer>
-            <h4>{props.expName}</h4>
             {props.showLinks && (
-                <div
-                    css={`
-                        display: flex;
-                    `}
-                >
-                    {props.links.map((el) => (
-                        <ProjectLink key={el.href} {...el} />
-                    ))}
-                </div>
+                <FlexContainer>
+                    {props.links.length ? (
+                        props.links.map((el) => <ProjectLink key={el.href} {...el} />)
+                    ) : (
+                        <NoLinks>No Links</NoLinks>
+                    )}
+                </FlexContainer>
             )}
+            {props.expTag && (
+                <ExprienceTag>
+                    <NoLinks>{props.expTag}</NoLinks>
+                </ExprienceTag>
+            )}
+            <h4>{props.expName}</h4>
             <Description>{props.expDetails}</Description>
             <SkillsContainer>
                 {props.techStack.map((el) => (
@@ -185,12 +203,7 @@ function Summary(props: ISummary) {
 }
 
 const SkillPill = styled.div`
-    display: inline-block;
-    margin: 5px;
-    padding: 5px 10px;
-    min-width: 50px;
-    text-align: center;
-    border-radius: 20px;
+    ${pillCss}
     background-color: #ffbf69;
 `;
 

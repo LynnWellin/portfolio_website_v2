@@ -10,155 +10,141 @@ export class ItemData {
     class: { gridColumn: string; gridRow: string };
     links: Link[];
     expDetails: string;
+    expTag: string | null;
 
     constructor(
-        type: "dev" | "biz",
         expName: string,
         style: number[],
-        ts: number[],
+        ts: string[],
         details: string,
-        links?: { type?: string; href: string }[]
+        links?: { type?: string; href: string }[],
+        expTag?: string
     ) {
         this.expName = expName;
         this.class = {
-            gridColumn: "span " + style[0],
-            gridRow: "span " + style[1],
+            gridColumn: 'span ' + style[0],
+            gridRow: 'span ' + style[1],
         };
-        this.techStack = ts
-            ? ts.map((el) => {
-                  return type === "dev" ? TS[el] : BS[el];
-              })
-            : [];
+        this.techStack = ts ?? [];
         this.expDetails = details;
         this.links = links ?? [];
+        this.expTag = expTag ?? null;
     }
 }
 
-const TS = [
-    "React",
-    "React Native",
-    "Node.js",
-    "MsSQL",
-    "ASP.NET",
-    "CSS",
-    "Postgres",
-    "JWT",
-    "browser history API",
-    "Sequelize",
-    "C#",
-    "SQLite",
-    "Firebase",
-];
-const BS = [
-    "Analysis",
-    "Client Reporting",
-    "Client Relations",
-    "Market Research",
-    "Strategy",
-    "International Business",
-];
+const SK_REACT = 'React';
+const SK_REACT_NT = 'React Native';
+const SK_NODE = 'Node.js';
+const SK_MS_SQL = 'MsSQL';
+const SK_ASP = 'ASP.NET';
+const SK_CSS = 'CSS';
+const SK_POST = 'Postgres';
+const SK_JWT = 'JWT';
+const SK_SEQUEL = 'Sequelize';
+const SK_CSHARP = 'C#';
+const SK_SQLITE = 'SQLite';
+const SK_FIREBASE = 'Firebase';
+const SK_REDUX = 'Redux';
+const SK_AWS = 'AWS';
+const SK_EC2 = 'EC2';
+const SK_RDS = 'RDS';
+const SK_WEBSOCKET = 'Websockets';
+const SK_TS = 'Typescript';
+
+const SK_ANALYSIS = 'Analysis';
+const SK_REPORTING = 'Client Reporting';
+const SK_RESEARCH = 'Market Research';
+const SK_STRAT = 'Strategy';
+const SK_INT_BIZ = 'International Business';
 
 export const DEV = [
     new ItemData(
-        "dev",
-        "Ingridify",
+        'Varicent',
         [4, 10],
-        [0, 2, 6, 9],
-        "Full stack developer working on a website for sharing recipes",
-        [{ type: "github", href: "https://github.com/hatchways/team-ivory" }]
+        [SK_REACT, SK_TS, SK_REDUX, SK_CSHARP],
+        'Full stack developer working on creating new features'
     ),
     new ItemData(
-        "dev",
-        "UserAuth",
+        'Ledger A',
         [4, 5],
-        [0, 2, 6, 7, 8, 9],
-        "Developed a user authentication system using JWT and encryption",
+        [
+            SK_REACT,
+            SK_REDUX,
+            SK_NODE,
+            SK_FIREBASE,
+            SK_AWS,
+            SK_POST,
+            SK_JWT,
+            SK_SEQUEL,
+            SK_EC2,
+            SK_RDS,
+        ],
+        'A website to track personal expenses, developed with React, NodeJS, Redux, Postgress; launched on AWS (EC2, RDS)',
+        [{ type: 'github', href: 'https://github.com/lebedevy/ledger_a' }],
+        'Project'
+    ),
+    new ItemData(
+        'Chess App',
+        [4, 5],
+        [SK_REACT, SK_TS, SK_REDUX, SK_WEBSOCKET, SK_NODE, SK_POST, SK_SEQUEL],
+        'Created an online chess app utilizing websockets that allowed live match updates',
+        [],
+        'Project'
+    ),
+    new ItemData(
+        'Note Taking App: Notty',
+        [4, 5],
+        [SK_REACT_NT, SK_NODE, SK_SQLITE, SK_FIREBASE],
+        'Developed an Android app to take notes, and organize them by tags',
         [
             {
-                type: "github",
-                href: "https://github.com/LynnWellin/finance_data_backend",
+                href: 'https://play.google.com/store/apps/details?id=com.nottynative&hl=en_US',
             },
-        ]
+        ],
+        'Project'
     ),
     new ItemData(
-        "dev",
-        "Note Taking App: Notty",
-        [4, 5],
-        [1, 2, 11, 12],
-        "Developed an Android app to take notes, and organize them by tags",
-        [
-            {
-                href:
-                    "https://play.google.com/store/apps/details?id=com.nottynative&hl=en_US",
-            },
-        ]
-    ),
-    new ItemData(
-        "dev",
-        "JobJunxion",
-        [4, 5],
-        [4, 10, 3],
-        "Worked as a full stack developer to improve and expand the student hiring platform",
-        [{ href: "https://app.jobjunxion.com/" }]
-    ),
-    new ItemData(
-        "dev",
-        "Portfolio Website",
+        'JobJunxion',
         [2, 5],
-        [0, 5, 12],
-        "Created a React website to demonstrate current portfolio",
-        [
-            {
-                type: "github",
-                href: "https://github.com/LynnWellin/portfolio_website_v2",
-            },
-        ]
+        [SK_ASP, SK_CSHARP, SK_MS_SQL],
+        'Worked as a full stack developer to improve and expand the student hiring platform',
+        [{ href: 'https://app.jobjunxion.com/' }]
     ),
     new ItemData(
-        "dev",
-        "Then and Now",
+        'Portfolio Website',
         [2, 5],
-        [0, 5, 12],
-        "Created a React website that retrieved and presented news articles using the Guardian API",
+        [SK_REACT, SK_CSS, SK_FIREBASE],
+        'Created a React website to demonstrate current portfolio',
         [
             {
-                type: "github",
-                href: "https://github.com/LynnWellin/now_and_then",
+                type: 'github',
+                href: 'https://github.com/LynnWellin/portfolio_website_v2',
             },
-            { href: "https://thenandnow.web.app/" },
-        ]
+        ],
+        'Project'
     ),
 ];
 
 export const BIZ = [
     new ItemData(
-        "biz",
-        "Goldman Sachs",
-        [4, 10],
-        [0, 1],
-        "Conducted analysis of private equity data to ensure accurate client reporting"
+        'Goldman Sachs',
+        [5, 10],
+        [SK_ANALYSIS, SK_REPORTING],
+        'Conducted analysis of private equity data to ensure accurate client reporting'
     ),
     new ItemData(
-        "biz",
-        "REnergyCO",
-        [4, 5],
-        [0, 3],
-        "Conducted market analysis of oil and gas industries, and compiled findings in market reports"
+        'REnergyCO',
+        [5, 5],
+        [SK_ANALYSIS, SK_RESEARCH],
+        'Conducted market analysis of oil and gas industries, and compiled findings in market reports'
     ),
     new ItemData(
-        "biz",
-        "Education",
-        [8, 5],
-        [4, 5],
+        'Education',
+        [9, 5],
+        [SK_STRAT, SK_RESEARCH, SK_INT_BIZ],
         "Graduated on the Dean's List with a Bachelors of Business Administration. Included 1 year of exchange studies in Sweden"
     ),
-    new ItemData(
-        "biz",
-        "Odd Jobs",
-        [4, 5],
-        [2],
-        "Painter, store clerk, cashier"
-    ),
+    new ItemData('Odd Jobs', [4, 5], [SK_REPORTING], 'Painter, store clerk, cashier'),
 ];
 
 export interface IPorfileLink {
@@ -170,13 +156,13 @@ export interface IPorfileLink {
 // profile links
 export const LINKS: IPorfileLink[] = [
     {
-        type: "LinkedIn",
-        link: "https://www.linkedin.com/in/yuryl/",
-        image: require("./Images/LI-Logo.png"),
+        type: 'LinkedIn',
+        link: 'https://www.linkedin.com/in/yuryl/',
+        image: require('./Images/LI-Logo.png'),
     },
     {
-        type: "LeetCode",
-        link: "https://leetcode.com/lynnwellin/",
-        image: require("./Images/LeetCode_nav.4d940ca72.png"),
+        type: 'LeetCode',
+        link: 'https://leetcode.com/lynnwellin/',
+        image: require('./Images/LeetCode_nav.4d940ca72.png'),
     },
 ];
