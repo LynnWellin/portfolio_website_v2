@@ -1,92 +1,35 @@
-.Header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: whitesmoke;
-  /* height: 190px; */
-  padding: 5px;
-}
-
-.HeaderLinks {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.HeaderLink:link {
-  color: #61dafb;
-  margin: 4px;
-}
-
-.HeaderLink:visited {
-  color: #61dafb;
-}
-
-.LinkImage {
-  margin: 10px;
-  height: 25px;
-}
-
-.GithubLink {
-  margin: 10px;
-  text-decoration: none;
-  color: white;
-}
-
-.EmailContactContainer {
-  margin: 10px;
-  padding: 5px 15px;
-  border-radius: 30px;
-  background: whitesmoke;
-  text-decoration: none;
-  color: #282c34;
-  font-weight: bold;
-  user-select: none;
-}
-
-.EmailContactContainer:hover {
-  cursor: pointer;
-  background: #515868;
-  color: whitesmoke;
-}
-
 /* Toggle based on */
 /* https://danklammer.com/articles/simple-css-toggle-switch/ */
 
 .ToggleDiv {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .ExpSelect {
-  appearance: none;
-  position: relative;
-  width: 62px;
-  height: 32px;
-  margin: 10px;
-  border-radius: 50px;
-  background: #707070;
+    appearance: none;
+    position: relative;
+    width: 62px;
+    height: 32px;
+    margin: 10px;
+    border-radius: 50px;
+    background-color: #707070;
 }
 
 .ExpSelect::before {
-  content: '';
-  position: absolute;
-  display: block;
-  width: 28px;
-  height: 28px;
-  left: 2px;
-  top: 2px;
-  border-radius: 50px;
-  z-index: 2;
-  background: #ffffff;
-  transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+    content: "";
+    position: absolute;
+    display: block;
+    width: 28px;
+    height: 28px;
+    left: 2px;
+    top: 2px;
+    border-radius: 50px;
+    z-index: 2;
+    background-color: #ffffff;
+    transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
 }
 
-/* .ExpSelect:checked {
-  background: #4cd964;
-} */
-
 .ExpSelect:checked:before {
-  left: 32px;
+    left: 32px;
 }

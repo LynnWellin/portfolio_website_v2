@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Header, ProjectLink } from "./GeneralComponents";
 import { DEV, BIZ, ItemData } from "./data";
-import "./css/App.css";
-import "./css/Items.css";
+import styled from "@emotion/styled";
+import { flexColumn } from "styles";
 
 interface IExp {
     name: string;
@@ -18,6 +18,20 @@ const SECTIONS: ISections = {
     dev: { name: "Developer", data: DEV },
     biz: { name: "Business", data: BIZ },
 };
+
+const AppContainer = styled.div`
+    ${flexColumn}
+    height: 100%;
+    width: 100%;
+    background-color: #011627;
+`;
+
+const SectionWrapper = styled.div`
+    ${flexColumn}
+    height: 100%;
+    width: 100%;
+    background-color: #09d3ac;
+`;
 
 export default function App() {
     const [type, setType] = useState("dev");
@@ -38,15 +52,15 @@ export default function App() {
     };
 
     return (
-        <div className="App">
+        <AppContainer>
             <Header changeType={changeType} />
-            <div className="SectionWrapper">
+            <SectionWrapper>
                 <ExperienceContainer
                     details={SECTIONS[type]}
                     width={windowWidth}
                 />
-            </div>
-        </div>
+            </SectionWrapper>
+        </AppContainer>
     );
 }
 
@@ -55,16 +69,33 @@ interface IExpContainer {
     width: number;
 }
 
+// Container with a 12 by 10 grid
+const ExprienceContainer = styled.div`
+    @media (min-width: 601px) {
+        flex: 1;
+        display: grid;
+        grid-auto-flow: column;
+        /* Used for borders between items; requires use of 1 fr instea of %*/
+        grid-gap: 1px;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        background-color: #ff9f1c;
+    }
+    @media (max-width: 600px) {
+        ${flexColumn}
+    }
+`;
+
 function ExperienceContainer({
     details,
     width,
 }: IExpContainer & { width: number }) {
     return (
-        <div className="ExperienceContainer">
+        <ExprienceContainer>
             {details.data.map((el) => (
                 <Item key={el.expName} {...el} width={width} />
             ))}
-        </div>
+        </ExprienceContainer>
     );
 }
 
@@ -87,48 +118,86 @@ function Item(props: ItemProps) {
             onMouseEnter={() => setMouseOver(true)}
             onMouseLeave={() => setMouseOver(false)}
         >
-            {mouseOver ? <Detailed {...props} /> : <Summary {...props} />}
+            <Summary {...props} showLinks={mouseOver} />
         </div>
     );
 }
 
-function Detailed(props: ItemProps) {
+const ItemContainer = styled.div`
+    ${flexColumn}
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #fdfffc;
+    transition: all 1s;
+    padding: 6% 0;
+    & h4 {
+        padding: 5px;
+        font-size: 25px;
+        text-align: center;
+    }
+    &:hover {
+        padding: 6% 0;
+        justify-content: space-evenly;
+        background-color: #edf2f4;
+    }
+`;
+
+const Description = styled.label`
+    text-align: center;
+    margin: 0px 35px;
+`;
+
+const SkillsContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`;
+
+interface ISummary extends ItemProps {
+    showLinks: boolean;
+}
+
+function Summary(props: ISummary) {
     return (
-        <div className={`Item ${props.width <= 600 ? "ItemHover" : ""}`}>
-            <h4 className="ItemTitle">{props.expName}</h4>
-            <div className="ProjectLinksContainer">
-                {props.links.map((el) => {
-                    return <ProjectLink key={el.href} {...el} />;
-                })}
-            </div>
-            <label className="Description">{props.expDetails}</label>
-            <div className="Skills">
+        <ItemContainer>
+            <h4>{props.expName}</h4>
+            {props.showLinks && (
+                <div
+                    css={`
+                        display: flex;
+                    `}
+                >
+                    {props.links.map((el) => (
+                        <ProjectLink key={el.href} {...el} />
+                    ))}
+                </div>
+            )}
+            <Description>{props.expDetails}</Description>
+            <SkillsContainer>
                 {props.techStack.map((el) => (
                     <Skill key={el} skill={el} />
                 ))}
-            </div>
-        </div>
+            </SkillsContainer>
+        </ItemContainer>
     );
 }
 
-function Summary(props: ItemProps) {
-    return (
-        <div className="Item">
-            <h4 className="ItemTitle">{props.expName}</h4>
-            <label className="Description">{props.expDetails}</label>
-            <div className="Skills">
-                {props.techStack.map((el) => (
-                    <Skill key={el} skill={el} />
-                ))}
-            </div>
-        </div>
-    );
-}
+const SkillPill = styled.div`
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 10px;
+    min-width: 50px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #ffbf69;
+`;
 
 function Skill({ skill }: { skill: string }) {
     return (
-        <div className="Skill">
+        <SkillPill>
             <label>{skill}</label>
-        </div>
+        </SkillPill>
     );
 }
