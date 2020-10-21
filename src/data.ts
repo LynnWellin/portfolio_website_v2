@@ -62,7 +62,8 @@ export const DEV = [
         'Varicent',
         [4, 10],
         [SK_REACT, SK_TS, SK_REDUX, SK_CSHARP],
-        'Full stack developer working on creating new features'
+        'Full stack developer working on creating new features',
+        [{ href: 'https://www.varicent.com/' }]
     ),
     new ItemData(
         'Ledger A',
@@ -80,7 +81,10 @@ export const DEV = [
             SK_RDS,
         ],
         'A website to track personal expenses, developed with React, NodeJS, Redux, Postgress; launched on AWS (EC2, RDS)',
-        [{ type: 'github', href: 'https://github.com/lebedevy/ledger_a' }],
+        [
+            { type: 'github', href: 'https://github.com/lebedevy/ledger_a' },
+            { href: 'http://www.theledgera.com/' },
+        ],
         'Project'
     ),
     new ItemData(

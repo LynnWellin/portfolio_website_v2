@@ -45,7 +45,7 @@ export function Header({ changeType }: { changeType: () => void }) {
                 {LINKS.map((el) => (
                     <FooterLink key={el.type} {...el} />
                 ))}
-                <GithubLink href="https://github.com/LynnWellin">
+                <GithubLink href="https://github.com/lebedevy">
                     <Octicon icon={MarkGithub} size="medium" />
                 </GithubLink>
             </LinksContainer>
